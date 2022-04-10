@@ -1,0 +1,225 @@
+.header-main {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+}
+
+.header-top {
+    font-size: 14px;
+    background-color: rgb(229, 226, 226);
+    /*background-color: black;*/
+    height: 36px;
+}
+
+.header-top__container {
+    align-items: center;
+    height: 100%;
+    position: relative;
+    /* max-width: 2048px; */
+}
+
+.header-top__city {
+    flex-grow: 1;
+    max-width: 232px;
+    width: 130px;
+}
+
+.header-city {
+    line-height: 1.2;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.header-city__icon {
+    width: 20px;
+    height: 22px;
+    margin-right: 6px;
+    fill: #535353;
+    margin-top: 8px;
+}
+
+.header-city__label {
+    overflow: hidden;
+    max-width: 116px;
+    position: absolute;
+    margin-top: 9px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+}
+
+.header-top__number {
+    flex-grow: 1;
+    max-width: 285px;
+}
+
+.header-number {
+    line-height: 1.2;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.header-number__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    fill: #535353;
+}
+
+.header-number__label {
+    overflow: hidden;
+    max-width: 180px;
+    position: absolute;
+    margin-top: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+}
+
+
+/*******/
+
+.header-top__shopAdresses {
+    flex-grow: 1;
+    max-width: 285px;
+    float: right;
+    margin-right: 200px;
+}
+
+.header-shopAdresses {
+    line-height: 1.2;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.header-shopAdresses__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    fill: #535353;
+    margin-top: 8px;
+}
+
+.header-shopAdresses__label {
+    overflow: hidden;
+    max-width: 180px;
+    position: absolute;
+    margin-top: 7px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+}
+
+
+/***********/
+
+.header-top__delivery {
+    flex-grow: 1;
+    max-width: 285px;
+    float: right;
+    margin-right: 200px;
+}
+
+.header-delivery {
+    line-height: 1.2;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.header-delivery__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    fill: #535353;
+    margin-top: 8px;
+}
+
+.header-delivery__label {
+    overflow: hidden;
+    max-width: 180px;
+    position: absolute;
+    margin-top: 7px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+}
+
+
+/***********/
+
+.header-top__profile {
+    flex-grow: 1;
+    max-width: 285px;
+    float: right;
+    margin-right: 100px;
+}
+
+.header-profile {
+    line-height: 1.2;
+    font-size: 14px;
+    display: inline-block;
+    padding-right: 44px;
+}
+
+.header-profile__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    fill: #535353;
+    margin-top: 8px;
+}
+
+.header-profile__label {
+    overflow: hidden;
+    max-width: 180px;
+    position: absolute;
+    margin-top: 7px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2em;
+}
+
+
+/***********/
+
+.main-header__container {
+    align-items: center;
+    height: 84px;
+}
+
+.main-header__logo-image {
+    display: block;
+    max-width: 100%;
+    padding-top: 27px;
+    display: inline-block;
+}
+
+.main-header__shoppingCart {
+    float: right;
+}
+
+.shoppingCart_wrapper {
+    font-size: 16px;
+    padding-top: 20px;
+    padding-right: 12px;
+}
+
+.shoppingCart_icon {
+    height: 24px;
+    width: 34px;
+    padding-left: 8px;
+}
+
+.shoppingCart_label {
+    line-height: 1.25;
+}
+
+.container {
+    padding-left: 44px;
+    padding-right: 44px;
+    width: 100%;
+}
+
+div {
+    display: block;
+    font: inherit;
+}
+
+* {
+    box-sizing: border-box;
+}
