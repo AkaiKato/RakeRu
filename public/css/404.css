@@ -1,0 +1,15 @@
+.four-o-four-image {
+    display: block;
+    margin: auto;
+    width: 750px;
+    height: 600px;
+}
+
+.four-o-four-msg {
+    text-align: center;
+    color: #383838;
+}
+
+.four-o-four-msg a {
+    color: #383838;
+}

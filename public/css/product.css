@@ -1,0 +1,111 @@
+.product-details {
+    width: 100%;
+    height: 100%;
+    padding: 60px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-slider {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    object-position: center;
+    position: relative;
+    object-fit: contain;
+}
+
+.details {
+    width: 100%;
+}
+
+.details .product-brand {
+    font-size: 30px;
+}
+
+.details .product-des {
+    font-size: 25px;
+    line-height: 30px;
+    height: auto;
+    margin: 15px 0;
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.product-actual-price {
+    font-size: 30px;
+    opacity: 0.5;
+    text-decoration: line-through;
+    margin: 0 20px;
+    font-weight: 300;
+}
+
+.product-discount {
+    color: #ff7d7d;
+    font-size: 20px;
+}
+
+.product-specs {
+    padding-top: 30px;
+}
+
+.product-sub-heading {
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+
+.product-specs-table {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+table {
+    background: white;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    font-weight: normal;
+    padding: 10px 8px;
+}
+
+td {
+    padding-top: 9px;
+    transition: .3s linear;
+}
+
+
+/*.tdLeft {
+    padding-right: 20px;
+}*/
+
+.tdRight {
+    padding-left: 70%;
+    text-align: right;
+}
+
+.btn {
+    width: 48%;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background: none;
+    border: 1px solid #9b2525;
+    color: #9b2525;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-btn {
+    margin-right: 2%;
+    background: #9b2525;
+    color: #fff;
+}
