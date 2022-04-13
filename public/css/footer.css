@@ -1,0 +1,33 @@
+footer {
+    position: relative;
+    width: 100%;
+    padding: 40px 10vw;
+    padding-bottom: 80px;
+    background: #383838;
+}
+
+.footer-social-conatiner {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info,
+.footer-title {
+    color: rgba(255, 255, 255, 0.75);
+    margin: 20px 0;
+}
+
+.footer-title {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.social-link {
+    color: #fff;
+    margin-left: 20px;
+}
+
+.social-link:nth-child(1) {
+    margin-left: 0;
+}
