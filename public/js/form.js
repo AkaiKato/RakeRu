@@ -9,6 +9,7 @@ $(".submit-btn").on("click", function() {
 const processData = (data) => {
     if (data.alert) {
         showAlert(data.alert);
+        location.replace('/');
     }
 }
 

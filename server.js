@@ -1,17 +1,29 @@
+const { redirect } = require("express/lib/response");
+
 var express = require("express"),
     http = require("http"),
     path = require('path'),
-    app = express();
+    app = express(),
+    mongoose = require("mongoose"),
+    UsersController = require("./controllers/user_controller")
 
 var staticPath = path.join(__dirname, "public");
 
 app.use(express.static(staticPath));
 app.use(express.json());
-
+app.use(express.urlencoded());
+mongoose.connect('mongodb://localhost/RakeRu', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(res => {
+    console.log("DB Connected!")
+}).catch(err => {
+    console.log(Error, err.message);
+});
 
 //home
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(staticPath, "index.html"));
 });
 
@@ -20,8 +32,8 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {
     res.sendFile(path.join(staticPath, "signup.html"))
 });
-app.use(express.urlencoded());
-app.post("/signup", (req, res) => {
+
+app.post("/signup", function(req, res) {
     var bb = req.body;
 
     if (bb.name.length < 2) {
@@ -33,10 +45,10 @@ app.post("/signup", (req, res) => {
     } else if (bb.UA === 'false') {
         return res.json({ 'alert': 'Вы должны согласиться с пользовательским соглашением' });
     } else {
-        console.log(bb);
+        UsersController.create(req, res);
     }
-    res.json('data recieved');
 });
+
 
 //404
 
