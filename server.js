@@ -1,5 +1,3 @@
-const { redirect } = require("express/lib/response");
-
 var express = require("express"),
     http = require("http"),
     path = require('path'),
@@ -35,7 +33,6 @@ app.get("/signup", (req, res) => {
 
 app.post("/signup", function(req, res) {
     var bb = req.body;
-
     if (bb.name.length < 2) {
         return res.json({ 'alert': "Имя должно состоять минимум из 2 букв " });
     } else if (!bb.email.length) {
@@ -49,6 +46,20 @@ app.post("/signup", function(req, res) {
     }
 });
 
+//login
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(staticPath, "login.html"))
+});
+
+app.post("/login", function(req, res) {
+    var bb = req.body;
+    if (!bb.email.length || !bb.password.length) {
+        return res.json({ 'alert': 'Введите свои данные' });
+    } else {
+        UsersController.login(req, res);
+    }
+});
 
 //404
 

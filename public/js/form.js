@@ -1,16 +1,23 @@
 $(".submit-btn").on("click", function() {
-    var newUser = { name: $("#name").val(), email: $("#email").val(), password: $("#password").val(), UA: $("#user-agreement").is(":checked"), seller: false }
-    console.log(newUser);
-    $.post("/signup", newUser, function(response) {
-        processData(response);
-    })
+    if ($("#name").val() != null) { //signup
+        var newUser = { name: $("#name").val(), email: $("#email").val(), password: $("#password").val(), UA: $("#user-agreement").is(":checked"), seller: false }
+        $.post("/signup", newUser, function(response) {
+            processData(response);
+        })
+    } else {
+        var checkUser = { email: $("#email").val(), password: $("#password").val() }
+        $.post("/login", checkUser, function(response) {
+            processData(response);
+        })
+    }
 })
 
 const processData = (data) => {
     if (data.alert) {
         showAlert(data.alert);
-        location.replace('/');
+        return;
     }
+    location.replace('/');
 }
 
 const showAlert = (msg) => {

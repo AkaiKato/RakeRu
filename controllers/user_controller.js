@@ -3,7 +3,6 @@ var User = require("../models/user"),
     path = require('path'),
     mongoose = require("mongoose");
 
-var staticPath = path.join(__dirname, "public");
 
 UsersController.create = function(req, res) {
     var email = req.body.email;
@@ -32,5 +31,20 @@ UsersController.create = function(req, res) {
         }
     });
 };
+
+UsersController.login = function(req, res) {
+    var email = req.body.email;
+    var password = req.body.password;
+    User.find({ "email": email, "password": password }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else if (result.length !== 0) {
+            return res.json(200, result)
+        } else {
+            return res.json({ 'alert': 'Такого пользователя нет в системе' });
+        }
+    });
+}
 
 module.exports = UsersController;
