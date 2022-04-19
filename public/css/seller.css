@@ -1,0 +1,87 @@
+body {
+    width: 100%;
+    display: block;
+    min-height: auto;
+    position: relative;
+}
+
+.logo {
+    margin: 20px auto 50px;
+}
+
+.hide {
+    display: none;
+}
+
+.become-seller {
+    border-radius: 10px;
+    background: #fff;
+    padding: 30px;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.des {
+    margin: 20px 0;
+    line-height: 25px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: #9b2525;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.apply-form {
+    padding: 30px;
+}
+
+.apply-form input,
+textarea {
+    font-weight: 500;
+}
+
+.apply-form input:not(input[type="checkbox"]) {
+    width: 95%;
+}
+
+.apply-form textarea {
+    width: 95%;
+    height: 90px;
+    resize: none;
+    padding: 10px 20px;
+}
+
+.submit-btn {
+    margin: 10px 0;
+    width: auto;
+    padding: 0 40px;
+}
+
+.add-product {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.add-product-title {
+    color: #383838;
+}
+
+.no-product-image {
+    display: block;
+    margin: auto;
+}

@@ -17,6 +17,7 @@ const processData = (data) => {
         showAlert(data.alert);
         return;
     }
+    sessionStorage.user = JSON.stringify(data);
     location.replace('/');
 }
 

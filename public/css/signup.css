@@ -15,7 +15,8 @@
     
     input[type="text"],
     input[type="password"],
-    input[type="email"] {
+    input[type="email"],
+    textarea {
         display: block;
         font-size: large;
         width: 500px;

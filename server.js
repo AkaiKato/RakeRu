@@ -3,7 +3,8 @@ var express = require("express"),
     path = require('path'),
     app = express(),
     mongoose = require("mongoose"),
-    UsersController = require("./controllers/user_controller")
+    UsersController = require("./controllers/user_controller"),
+    SellerController = require("./controllers/seller_controller")
 
 var staticPath = path.join(__dirname, "public");
 
@@ -60,6 +61,23 @@ app.post("/login", function(req, res) {
         UsersController.login(req, res);
     }
 });
+
+//seller
+
+app.get('/seller', (req, res) => {
+    res.sendFile(path.join(staticPath, "seller.html"))
+});
+
+app.post('/seller', (req, res) => {
+    var bb = req.body;
+    if (!bb.name.length || !bb.adress.length || !bb.about.length) {
+        return res.json({ 'alert': 'Заполните все поля!' })
+    } else if (bb.UA === 'false') {
+        return res.json({ 'alert': 'Вы должны согласиться с пользовательским соглашением' });
+    } else {
+        SellerController.create(req, res);
+    }
+})
 
 //404
 
