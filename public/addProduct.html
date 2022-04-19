@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="vieport" content="width=device-width, initial-scale=1.0">
+    <title>Грабли.ру - лучший магазин!</title>
+
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/addProduct.css">
+
+</head>
+
+<body>
+
+    <div class="alert-box">
+        <img src="img/error.png" class="alert-img" alt="">
+        <p class="alert-msg">Ошибка!</p>
+    </div>
+
+    <img src="img/RakeRU.jpg" class="logo" alt="">
+
+    <div class="form">
+        <input type="text" id="prduct-name" placeholder="Название товара">
+    </div>
+
+    <div class="product-info">
+        <div class="product-image">
+            <p class="text">Фотография продукта</p>
+        </div>
+        <div class="upload-image-sec">
+            <p class="text"><img src="img/camera.png"> Загрузите картинку</p>
+            <div class="upload">
+                <input type="file" class="fileupload" id="upload-btn" hidden>
+                <label for="upload-btn" class="upload-image"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <input type="number" id="total-length" placeholder="Общая длина">
+        <input type="number" id="width" placeholder="Ширина">
+        <input type="text" id="cutting-material" placeholder="Материал черенка">
+        <input type="text" id="material-working-part" placeholder="Материал рабочей части">
+        <input type="number" id="length-working-part" placeholder="Длина рабочей части">
+        <input type="number" id="actual-price" placeholder="Цена товара">
+        <input type="number" id="discount" placeholder="Скидка%">
+        <input type="number" id="sell-price" placeholder="Окончательная цена">
+    </div>
+
+    <div class="buttons">
+        <button class="btn" id="add-btn">Добавить продукт</button>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/addProduct.js"></script>
+
+</body>
+
+</html>
