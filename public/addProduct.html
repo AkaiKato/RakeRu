@@ -21,18 +21,18 @@
     <img src="img/RakeRU.jpg" class="logo" alt="">
 
     <div class="form">
-        <input type="text" id="prduct-name" placeholder="Название товара">
+        <input type="text" id="product-name" placeholder="Название товара">
     </div>
 
     <div class="product-info">
         <div class="product-image">
-            <p class="text">Фотография продукта</p>
+            <img src="" id='preview' alt="imagepreview">
         </div>
         <div class="upload-image-sec">
             <p class="text"><img src="img/camera.png"> Загрузите картинку</p>
             <div class="upload">
-                <input type="file" class="fileupload" id="upload-btn" hidden>
-                <label for="upload-btn" class="upload-image"></label>
+                <input type="file" class="fileupload" id="upload-btn" onchange="previewFile(this)" hidden>
+                <label for="upload-btn" class="upload-image"> Нажми на меня!</label>
             </div>
         </div>
     </div>

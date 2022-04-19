@@ -4,7 +4,8 @@ var express = require("express"),
     app = express(),
     mongoose = require("mongoose"),
     UsersController = require("./controllers/user_controller"),
-    SellerController = require("./controllers/seller_controller")
+    SellerController = require("./controllers/seller_controller"),
+    ProductController = require("./controllers/product_controller")
 
 var staticPath = path.join(__dirname, "public");
 
@@ -19,6 +20,7 @@ mongoose.connect('mongodb://localhost/RakeRu', {
 }).catch(err => {
     console.log(Error, err.message);
 });
+
 
 //home
 
@@ -78,6 +80,22 @@ app.post('/seller', (req, res) => {
         SellerController.create(req, res);
     }
 })
+
+//add-product
+
+app.get('/add-product', (req, res) => {
+    res.sendFile(path.join(staticPath, "addProduct.html"))
+});
+
+app.post('/add-product', (req, res) => {
+    var bb = req.body;
+    if (!bb.name.length || !bb.totalLength.length || !bb.width.length || !bb.cuttingMaterial.length || !bb.materialWorkingPart.length || !bb.lengthWorkingPart.length || !bb.actualPrice.length || !bb.discount.length || !bb.sellPrice.length) {
+        return res.json({ 'alert': 'Заполните все поля!' })
+    } else {
+        ProductController.create(req, res);
+    }
+})
+
 
 //404
 

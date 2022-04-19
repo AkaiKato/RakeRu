@@ -23,7 +23,6 @@ $("#apply-btn").on("click", function() {
 })
 
 const UA = document.querySelector('#user-agreement')
-const businessName = document.querySelector('#businessName')
 
 $("#apply-form-btn").on('click', function() {
     if (!$("#business-name").val().length || !$("#business-add").val().length || !$("#about").val().length) {

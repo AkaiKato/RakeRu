@@ -1,5 +1,3 @@
-const { Console } = require("console");
-
 var Seller = require("../models/seller"),
     SellerController = {},
     path = require('path'),
