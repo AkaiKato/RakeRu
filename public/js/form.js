@@ -2,7 +2,7 @@ $(".submit-btn").on("click", function() {
     if ($("#name").val() != null) { //signup
         var newUser = { name: $("#name").val(), email: $("#email").val(), password: $("#password").val(), UA: $("#user-agreement").is(":checked"), seller: false }
         $.post("/signup", newUser, function(response) {
-            processData(response);
+            processDataSignUp(response);
         })
     } else {
         var checkUser = { email: $("#email").val(), password: $("#password").val() }
@@ -11,6 +11,14 @@ $(".submit-btn").on("click", function() {
         })
     }
 })
+
+const processDataSignUp = (data) => {
+    if (data.alert) {
+        showAlert(data.alert);
+        return;
+    }
+    location.href = '/login';
+}
 
 const processData = (data) => {
     if (data.alert) {

@@ -11,7 +11,7 @@ const createNav = () => {
                 <button class="btn" id="user-btn">Выйти</button>\
             </div>\
             </a>\
-            <a href="/cart"><img src="../img/shoppingCart.png" alt="cool shoppingCart icon"></a>\
+            \
         </div>\
     </div>\
    ';
@@ -39,7 +39,7 @@ window.onload = () => {
             location.reload();
         })
     } else {
-        popuptext.innerHTML = 'Войдите чтобы сделать заказ';
+        popuptext.innerHTML = 'Войдите чтобы иметь возможность стать продавцом';
         actionBtn.innerHTML = 'Войти';
         actionBtn.addEventListener('click', () => {
             location.href = '/login';
