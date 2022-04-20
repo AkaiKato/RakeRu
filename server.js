@@ -108,6 +108,10 @@ app.post('/add-product', (req, res) => {
 
 //get-product
 
+app.get('/product/:name', (req, res) => {
+    res.sendFile(path.join(staticPath, "product.html"))
+})
+
 app.post('/get-product', (req, res) => {
     ProductController.get(req, res);
 })
@@ -116,11 +120,29 @@ app.post('/get-product-change', (req, res) => {
     ProductController.getChange(req, res);
 })
 
+app.post('/get-product-one', (req, res) => {
+    ProductController.getOne(req, res);
+})
+
+app.post('/get-product-all', (req, res) => {
+    ProductController.getAll(req, res);
+})
+
+
 //del-product
 
 app.post('/del-product', (req, res) => {
-    console.log("GG")
     ProductController.delete(req, res);
+})
+
+//policy and UA
+
+app.get('/policy', (req, res) => {
+    res.sendFile(path.join(staticPath, "policy.html"))
+})
+
+app.get('/UA', (req, res) => {
+    res.sendFile(path.join(staticPath, "UA.html"))
 })
 
 //404

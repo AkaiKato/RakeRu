@@ -30,6 +30,7 @@ userImageButton.addEventListener('click', () => {
 });
 
 window.onload = () => {
+    setupProducts();
     let user = JSON.parse(sessionStorage.user || null)
     if (user != null) {
         popuptext.innerHTML = 'Вы вошли как, ' + user.map(user => user.name);
@@ -45,4 +46,11 @@ window.onload = () => {
             location.href = '/login';
         })
     }
+}
+
+const setupProducts = () => {
+    var getProducts = { name: 'all' }
+    $.post("/get-product-all", getProducts, function(response) {
+        response.forEach(product => createProductIndex(product))
+    })
 }

@@ -96,6 +96,7 @@ const showAlert = (msg) => {
 }
 
 const setForm = (data) => {
+    // console.log(data.map(data => data._id));
     console.log(data.map(data => data._id));
     id = data.map(data => data._id);
     $("#product-name").val(data.map(data => data.name));

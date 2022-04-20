@@ -7,6 +7,25 @@ footer {
     background: #383838;
 }
 
+.policyAndUa {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 40px 10vw;
+    padding-bottom: 80px;
+}
+
+.policyAndUa-info,
+.policyAndUa-title {
+    color: rgba(0, 0, 0, 0.75);
+    margin: 20px 0;
+}
+
+.policyAndUa-title {
+    margin-top: 20px;
+    color: rgb(0, 0, 0);
+}
+
 .footer-social-conatiner {
     margin-top: 40px;
     display: flex;

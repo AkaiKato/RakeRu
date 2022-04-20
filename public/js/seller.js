@@ -6,10 +6,10 @@ const applyForm = document.querySelector('.apply-form');
 window.onload = () => {
     if (sessionStorage.user) {
         let user = JSON.parse(sessionStorage.user);
-        if (!user.map(user => user.seller)) {
+        if (user.map(user => user.seller) === 'false') {
             becomeSellerElement.classList.remove('hide');
         } else {
-            //productListingElement.classList.remove('hide');
+            productListingElement.classList.remove('hide');
             setupProducts();
         }
 
@@ -35,6 +35,12 @@ $("#apply-form-btn").on('click', function() {
         var newSeller = { name: $("#business-name").val(), adress: $("#business-add").val(), about: $("#about").val(), UA: $("#user-agreement").is(":checked"), email: em.map(em => em.email) }
         $.post("/seller", newSeller, function(response) {
             processData(response);
+        })
+
+        var newSes = { name: em.map(em => em.name), email: em.map(em => em.email) }
+        sessionStorage.clear();
+        $.post("/login", newSes, function(response) {
+            sessionStorage.user = JSON.stringify(response);
         })
     }
 })

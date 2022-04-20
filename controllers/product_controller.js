@@ -58,6 +58,31 @@ ProductController.get = function(req, res) {
     });
 }
 
+ProductController.getOne = function(req, res) {
+    var name = req.body.name;
+    Product.find({ "name": name }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else {
+            console.log(result);
+            res.json(200, result)
+        }
+    });
+}
+
+ProductController.getAll = function(req, res) {
+    Product.find({}, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else {
+            console.log(result);
+            res.json(200, result)
+        }
+    });
+}
+
 ProductController.getChange = function(req, res) {
     var email = req.body.email;
     var name = req.body.name;
