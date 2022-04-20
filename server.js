@@ -1,3 +1,5 @@
+const res = require("express/lib/response");
+
 var express = require("express"),
     http = require("http"),
     path = require('path'),
@@ -87,6 +89,14 @@ app.get('/add-product', (req, res) => {
     res.sendFile(path.join(staticPath, "addProduct.html"))
 });
 
+app.get('/add-product/:name', (req, res) => {
+    res.sendFile(path.join(staticPath, "addProduct.html"))
+});
+
+app.post('/add-product-change', (req, res) => {
+    ProductController.change(req, res);
+});
+
 app.post('/add-product', (req, res) => {
     var bb = req.body;
     if (!bb.name.length || !bb.totalLength.length || !bb.width.length || !bb.cuttingMaterial.length || !bb.materialWorkingPart.length || !bb.lengthWorkingPart.length || !bb.actualPrice.length || !bb.discount.length || !bb.sellPrice.length) {
@@ -96,6 +106,22 @@ app.post('/add-product', (req, res) => {
     }
 })
 
+//get-product
+
+app.post('/get-product', (req, res) => {
+    ProductController.get(req, res);
+})
+
+app.post('/get-product-change', (req, res) => {
+    ProductController.getChange(req, res);
+})
+
+//del-product
+
+app.post('/del-product', (req, res) => {
+    console.log("GG")
+    ProductController.delete(req, res);
+})
 
 //404
 

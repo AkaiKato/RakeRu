@@ -7,6 +7,7 @@ var Product = require("../models/products"),
 
 ProductController.create = function(req, res) {
     var name = req.body.name;
+    console.log(name)
     Product.find({ "name": name }, function(err, result) {
         if (err) {
             console.log(err);
@@ -41,5 +42,57 @@ ProductController.create = function(req, res) {
         }
     });
 };
+
+ProductController.get = function(req, res) {
+    var email = req.body.email;
+    Product.find({ "email": email }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else if (result.length !== 0) {
+            console.log(result);
+            res.json(200, result)
+        } else {
+            res.json({ 'alertNP': 'no products' })
+        }
+    });
+}
+
+ProductController.getChange = function(req, res) {
+    var email = req.body.email;
+    var name = req.body.name;
+    Product.find({ "email": email, "name": name }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else if (result.length !== 0) {
+            console.log(result);
+            res.json(200, result)
+        } else {
+            res.json({ 'alertNP': 'no products' })
+        }
+    });
+}
+
+ProductController.change = function(req, res) {
+    var id = req.body.id.join();
+    Product.findOneAndUpdate
+    Product.findOneAndUpdate({ "_id": id }, { "name": req.body.name, "img": req.body.img, "totalLength": req.body.totalLength, "width": req.body.width, "cuttingMaterial": req.body.cuttingMaterial, "materialWorkingPart": req.body.materialWorkingPart, "lengthWorkingPart": req.body.lengthWorkingPart, "actualPrice": req.body.actualPrice, "discount": req.body.discount, "sellPrice": req.body.sellPrice }, { new: true }, function(errr, ress) {
+        if (errr) {
+            res.send(500, errr)
+        } else {
+            res.json(200, ress);
+        }
+    })
+}
+
+
+ProductController.delete = function(req, res) {
+    var name = req.body.name;
+    console.log(name);
+    Product.find({ "name": name }).remove().exec();
+    console.log('PROSHEL');
+    res.json('success')
+}
 
 module.exports = ProductController;

@@ -9,7 +9,8 @@ window.onload = () => {
         if (!user.map(user => user.seller)) {
             becomeSellerElement.classList.remove('hide');
         } else {
-            productListingElement.classList.remove('hide');
+            //productListingElement.classList.remove('hide');
+            setupProducts();
         }
 
     } else {
@@ -43,8 +44,6 @@ const processData = (data) => {
         showAlert(data.alert);
         return;
     }
-    sessionStorage.user = JSON.stringify(data);
-    // location.replace('/');
 }
 
 const showAlert = (msg) => {
@@ -55,4 +54,19 @@ const showAlert = (msg) => {
     setTimeout(() => {
         alertBox.classList.remove('show');
     }, 3000);
+}
+
+const setupProducts = () => {
+    let userEmail = JSON.parse(sessionStorage.user);
+    var getProducts = { email: userEmail.map(userEmail => userEmail.email) }
+    $.post("/get-product", getProducts, function(response) {
+        processData(response);
+        productListingElement.classList.remove('hide');
+        if (response.alertNP) {
+            let emptySvg = document.querySelector('.no-product-image');
+            emptySvg.classList.remove('hide')
+        } else {
+            response.forEach(product => createProduct(product))
+        }
+    })
 }

@@ -6,8 +6,12 @@
     <meta name="vieport" content="width=device-width, initial-scale=1.0">
     <title>Грабли.ру - лучший магазин!</title>
 
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/seller.css">
+
 
 
 </head>
@@ -39,15 +43,34 @@
         <button class="submit-btn" id="apply-form-btn">Создать аккаунт</button>
     </div>
 
+
     <div class="product-listing hide">
         <div class="add-product">
             <p class="add-product-title"> Добавить продукт</p>
-            <button class="btn">Добавить продукт</button>
+            <button class="btn" onclick="location.href = '/add-product'">Добавить продукт</button>
         </div>
-        <img src="img/NoGoods.jpg" class="no-product-image" alt="">
+        <img src="img/NoGoods.jpg" class="no-product-image hide" alt="">
+
+        <div class="product-container">
+            <!-- <div class="product-card">
+                <div class="product-image">
+                    <span class="tag">Draft</span>
+                    <img src="img/card1.jpg" class="product-thumb" alt="">
+                    <button class="card-action-btn edit-btn"><img src="img/edit.png" alt=""></img></button>
+                    <button class="card-action-btn open-btn"><img src="img/open.png" alt=""></img></button>
+                    <button class="card-action-btn delete-popup-btn"><img src="img/delete.png" alt=""></img></button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">Лопата совковая GRINDA деревянный черенок</h2>
+                    <span class="price">671₽</span><span class="actual-price">1342₽</span>
+                </div>
+            </div> -->
+        </div>
+
     </div>
 
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/createProduct.js"></script>
     <script src="js/seller.js"></script>
 
 </body>

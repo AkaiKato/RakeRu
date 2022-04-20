@@ -1,4 +1,5 @@
 let user = JSON.parse(sessionStorage.user || null)
+let id;
 
 const actualPrice = document.querySelector('#actual-price');
 const discountPercentage = document.querySelector('#discount')
@@ -25,7 +26,6 @@ function previewFile(input) {
             $('#preview').attr('src', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
-        console.log(reader)
     }
 }
 
@@ -38,23 +38,42 @@ $("#add-btn").on('click', function() {
         !$("#sell-price").val().length) {
         showAlert('Заполните все поля!');
     } else {
-        //console.log($("#preview").attr('src'));
-        var newProduct = {
-            name: $("#product-name").val(),
-            img: $("#preview").attr('src'),
-            totalLength: $("#total-length").val(),
-            width: $("#width").val(),
-            cuttingMaterial: $("#cutting-material").val(),
-            materialWorkingPart: $("#material-working-part").val(),
-            lengthWorkingPart: $("#length-working-part").val(),
-            actualPrice: $("#actual-price").val(),
-            discount: $("#discount").val(),
-            sellPrice: $("#sell-price").val(),
-            email: user.map(user => user.email)
+        if (location.pathname != '/add-product') {
+            var changeProduct = {
+                id: id,
+                name: $("#product-name").val(),
+                img: $("#preview").attr('src'),
+                totalLength: $("#total-length").val(),
+                width: $("#width").val(),
+                cuttingMaterial: $("#cutting-material").val(),
+                materialWorkingPart: $("#material-working-part").val(),
+                lengthWorkingPart: $("#length-working-part").val(),
+                actualPrice: $("#actual-price").val(),
+                discount: $("#discount").val(),
+                sellPrice: $("#sell-price").val(),
+                email: user.map(user => user.email)
+            }
+            $.post('/add-product-change', changeProduct, function(response) {
+                processData(response);
+            })
+        } else {
+            var newProduct = {
+                name: $("#product-name").val(),
+                img: $("#preview").attr('src'),
+                totalLength: $("#total-length").val(),
+                width: $("#width").val(),
+                cuttingMaterial: $("#cutting-material").val(),
+                materialWorkingPart: $("#material-working-part").val(),
+                lengthWorkingPart: $("#length-working-part").val(),
+                actualPrice: $("#actual-price").val(),
+                discount: $("#discount").val(),
+                sellPrice: $("#sell-price").val(),
+                email: user.map(user => user.email)
+            }
+            $.post('/add-product', newProduct, function(response) {
+                processData(response);
+            })
         }
-        $.post('/add-product', newProduct, function(response) {
-            processData(response);
-        })
     }
 })
 
@@ -63,8 +82,7 @@ const processData = (data) => {
         showAlert(data.alert);
         return;
     }
-    //sessionStorage.user = JSON.stringify(data);
-    // location.replace('/');
+    location.replace('/seller');
 }
 
 const showAlert = (msg) => {
@@ -75,4 +93,37 @@ const showAlert = (msg) => {
     setTimeout(() => {
         alertBox.classList.remove('show');
     }, 3000);
+}
+
+const setForm = (data) => {
+    console.log(data.map(data => data._id));
+    id = data.map(data => data._id);
+    $("#product-name").val(data.map(data => data.name));
+    $("#total-length").val(data.map(data => data.totalLength));
+    $("#width").val(data.map(data => data.width));
+    $("#cutting-material").val(data.map(data => data.cuttingMaterial));
+    $("#material-working-part").val(data.map(data => data.materialWorkingPart));
+    $("#length-working-part").val(data.map(data => data.lengthWorkingPart));
+    $("#actual-price").val(data.map(data => data.actualPrice));
+    $("#discount").val(data.map(data => data.discount));
+    $("#sell-price").val(data.map(data => data.sellPrice));
+    $("#preview").attr('src', data.map(data => data.img));
+}
+
+let productName = null;
+
+if (location.pathname != '/add-product') {
+    productName = decodeURI(location.pathname.split('/').pop());
+
+    let productDetail = JSON.parse(sessionStorage.tempProduct || null);
+
+    delete sessionStorage.tempProduct;
+    var getPr = {
+        email: user.map(user => user.email),
+        name: productName
+    }
+    $.post('/get-product-change', getPr, function(response) {
+        setForm(response);
+    })
+
 }
