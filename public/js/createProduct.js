@@ -5,10 +5,9 @@ const createProductIndex = (data) => {
     productContainer.innerHTML += '\
     <div class="product-card">\
         <div class="product-image">\
-        <form action="/product/' + data.name + '">\
-            <button class= "prod"><img src="' + data.img + '" class="product-thumb" alt=""></button>\
-        </form>\
-            <button class="card-btn">В корзину</button>\
+            <form action="/product/' + data.name + '">\
+                <button class= "prod"><img src="' + data.img + '" class="product-thumb" alt=""></button>\
+            </form>\
         </div>\
         <div class="product-info">\
             <h2 class="product-brand">' + data.name + '</h2>\

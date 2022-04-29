@@ -128,6 +128,14 @@ app.post('/get-product-all', (req, res) => {
     ProductController.getAll(req, res);
 })
 
+app.post('/get-product-type', (req, res) => {
+    ProductController.getType(req, res);
+})
+
+app.post('/get-product-name', (req, res) => {
+    ProductController.getName(req, res);
+})
+
 
 //del-product
 
@@ -143,6 +151,16 @@ app.get('/policy', (req, res) => {
 
 app.get('/UA', (req, res) => {
     res.sendFile(path.join(staticPath, "UA.html"))
+})
+
+//search
+
+app.get('/search', (req, res) => {
+    res.sendFile(path.join(staticPath, "search.html"))
+})
+
+app.get('/search/:name', (req, res) => {
+    res.sendFile(path.join(staticPath, "search.html"))
 })
 
 //404

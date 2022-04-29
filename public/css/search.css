@@ -20,3 +20,16 @@
     height: auto;
     grid-row-gap: 40px;
 }
+
+.form-search {
+    width: auto;
+}
+
+.no-product-image {
+    display: block;
+    margin: auto;
+}
+
+.hide {
+    display: none;
+}

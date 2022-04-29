@@ -1,12 +1,11 @@
 const becomeSellerElement = document.querySelector('.become-seller');
 const productListingElement = document.querySelector('.product-listing');
 const applyForm = document.querySelector('.apply-form');
-// const showApplyFormBtn = document.querySelector('#apply-btn');
 
 window.onload = () => {
     if (sessionStorage.user) {
         let user = JSON.parse(sessionStorage.user);
-        if (user.map(user => user.seller) === 'false') {
+        if (user.map(user => user.seller) == 'false') {
             becomeSellerElement.classList.remove('hide');
         } else {
             productListingElement.classList.remove('hide');

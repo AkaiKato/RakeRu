@@ -1,5 +1,4 @@
 var Product = require("../models/products"),
-    fileUpload = require('express-fileupload'),
     ProductController = {},
     path = require('path'),
     mongoose = require("mongoose");
@@ -17,6 +16,7 @@ ProductController.create = function(req, res) {
         } else {
             var newProduct = new Product({
                 "name": req.body.name,
+                "type": req.body.type,
                 "img": req.body.img,
                 "totalLength": req.body.totalLength,
                 "width": req.body.width,
@@ -38,7 +38,6 @@ ProductController.create = function(req, res) {
                 }
             });
             res.json(200, result);
-            console.log("YYYYYYYYYYYYYYYYY");
         }
     });
 };
@@ -102,7 +101,7 @@ ProductController.getChange = function(req, res) {
 ProductController.change = function(req, res) {
     var id = req.body.id.join();
     Product.findOneAndUpdate
-    Product.findOneAndUpdate({ "_id": id }, { "name": req.body.name, "img": req.body.img, "totalLength": req.body.totalLength, "width": req.body.width, "cuttingMaterial": req.body.cuttingMaterial, "materialWorkingPart": req.body.materialWorkingPart, "lengthWorkingPart": req.body.lengthWorkingPart, "actualPrice": req.body.actualPrice, "discount": req.body.discount, "sellPrice": req.body.sellPrice }, { new: true }, function(errr, ress) {
+    Product.findOneAndUpdate({ "_id": id }, { "name": req.body.name, "type": req.body.type, "img": req.body.img, "totalLength": req.body.totalLength, "width": req.body.width, "cuttingMaterial": req.body.cuttingMaterial, "materialWorkingPart": req.body.materialWorkingPart, "lengthWorkingPart": req.body.lengthWorkingPart, "actualPrice": req.body.actualPrice, "discount": req.body.discount, "sellPrice": req.body.sellPrice }, { new: true }, function(errr, ress) {
         if (errr) {
             res.send(500, errr)
         } else {
@@ -111,6 +110,35 @@ ProductController.change = function(req, res) {
     })
 }
 
+ProductController.getType = function(req, res) {
+    var type = req.body.type;
+    Product.find({ "type": type }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else if (result.length !== 0) {
+            console.log(result);
+            res.json(200, result)
+        } else {
+            res.json({ 'alertNP': 'no products' })
+        }
+    });
+}
+
+ProductController.getName = function(req, res) {
+    var name = req.body.name;
+    Product.find({ "name": { "$regex": name } }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else if (result.length !== 0) {
+            console.log(result);
+            res.json(200, result)
+        } else {
+            res.json({ 'alertNP': 'no products' })
+        }
+    });
+}
 
 ProductController.delete = function(req, res) {
     var name = req.body.name;

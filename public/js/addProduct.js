@@ -36,12 +36,14 @@ $("#add-btn").on('click', function() {
         !$("#material-working-part").val().length || !$("#length-working-part").val().length ||
         !$("#actual-price").val().length || !$("#discount").val().length ||
         !$("#sell-price").val().length) {
+        console.log($("#type_list option:selected").text());
         showAlert('Заполните все поля!');
     } else {
         if (location.pathname != '/add-product') {
             var changeProduct = {
                 id: id,
-                name: $("#product-name").val(),
+                name: $("#product-name").val().toLowerCase(),
+                type: $("#type_list option:selected").text(),
                 img: $("#preview").attr('src'),
                 totalLength: $("#total-length").val(),
                 width: $("#width").val(),
@@ -58,7 +60,8 @@ $("#add-btn").on('click', function() {
             })
         } else {
             var newProduct = {
-                name: $("#product-name").val(),
+                name: $("#product-name").val().toLowerCase(),
+                type: $("#type_list option:selected").text(),
                 img: $("#preview").attr('src'),
                 totalLength: $("#total-length").val(),
                 width: $("#width").val(),
@@ -96,10 +99,10 @@ const showAlert = (msg) => {
 }
 
 const setForm = (data) => {
-    // console.log(data.map(data => data._id));
     console.log(data.map(data => data._id));
     id = data.map(data => data._id);
     $("#product-name").val(data.map(data => data.name));
+    $("#type_list").val(data.map(data => data.type));
     $("#total-length").val(data.map(data => data.totalLength));
     $("#width").val(data.map(data => data.width));
     $("#cutting-material").val(data.map(data => data.cuttingMaterial));
@@ -115,8 +118,6 @@ let productName = null;
 
 if (location.pathname != '/add-product') {
     productName = decodeURI(location.pathname.split('/').pop());
-
-    let productDetail = JSON.parse(sessionStorage.tempProduct || null);
 
     delete sessionStorage.tempProduct;
     var getPr = {

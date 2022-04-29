@@ -42,13 +42,13 @@
     border-bottom-left-radius: 10px;
     border: 1px solid #d1d1d1;
     text-transform: capitalize;
-    background: none;
+    background: white;
     color: #000000;
     outline: none;
 }
 
 .search-btn {
-    width: 20%;
+    /* width: 20%; */
     height: 40px;
     padding: 10px 20px;
     border: none;

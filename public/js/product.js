@@ -1,4 +1,5 @@
 const setData = (data) => {
+    console.log(data);
     const name = document.querySelector('.product-brand');
     const price = document.querySelector('.product-price');
     const actualPrice = document.querySelector('.product-actual-price');
